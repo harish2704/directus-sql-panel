@@ -1,0 +1,1 @@
+"use strict";var a=function(a,{services:s,database:e,getSchema:t}){a.get("/:id",(async function(a,s){const t=await e.raw('SELECT "options", "id" FROM "directus_panels" WHERE "id" = ? ',[a.params.id]),i=await e.raw(t.rows[0].options.sql);s.json({items:i.rows,headers:i.fields.map((a=>({text:a.name,value:a.name})))})}))};module.exports=a;
