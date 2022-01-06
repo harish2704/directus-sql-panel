@@ -17,7 +17,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    text: {
+    columnWidth: {
       type: String,
       default: "",
     },
@@ -37,6 +37,10 @@ export default {
     async fetchData() {
       const api = useApi();
       const { data } = await api(`sql-panel-api/${this.id}`);
+      let columnWidth = this.columnWidth.split(',').map( parseFloat );
+      data.headers.forEach(function(v,i){
+        v.width = columnWidth[i];
+      });
       this.headers = data.headers;
       this.items = data.items;
     },
