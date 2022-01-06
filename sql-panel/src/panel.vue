@@ -1,9 +1,10 @@
 <template>
-  <div class="text" :class="{ 'has-header': showHeader }">
-    <v-table
-      :headers="headers"
-      :items="items"
-    />
+  <div class="sql-panel-container" :class="{ 'has-header': showHeader }">
+      <v-table
+        :showResize="true"
+        v-model:headers="headers"
+        :items="items"
+      />
   </div>
 </template>
 
@@ -44,11 +45,11 @@ export default {
 </script>
 
 <style scoped>
-.text {
-  padding: 12px;
+.sql-panel-container {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
-.text.has-header {
-  padding: 0 12px;
-}
 </style>
